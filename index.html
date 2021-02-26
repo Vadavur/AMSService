@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <link href='style/style.css' rel='stylesheet'>
+    <meta charset='UTF-8'>
+    <title>Main page</title>
+</head>
+<body>
+
+<h2>AMS Table</h2>
+
+    <div class='search_field'>
+        <input id='search_field'>
+        <button id='getAmsById' >Get Ams by id</button>
+    </div>
+    <div class="pagesWindow">
+        <div class="dropdown pageSizeWindow">
+            <button class="dropbtn">
+                <p>Pagesize</p>
+                <input id='pageSizeText' type="number" name="pageSizeText" value="10" onclick="this.select()">
+                <p id="numberOfAms">/0</p>
+            </button>
+            <div class="dropdown-content">
+                <form id = 'pageSize'>      
+                    <input type="radio" name="pageSize" id='ps5' value="5"><label for="ps5">5</label>      
+                    <input type="radio" name="pageSize" id='ps10' value="10" checked><label for="ps10">10</label>      
+                    <input type="radio" name="pageSize" id='ps20' value="20"><label for="ps20">20</label>
+                    <input type="radio" name="pageSize" id='ps50' value="50"><label for="ps50">50</label>
+                    <input type="radio" name="pageSize" id='ps100' value="100"><label for="ps100">100</label>
+                </form>
+            </div>
+        </div>
+        <div id="pageQuantity">
+            <button class="pageNumber" id="pressedPage">1</button>
+        </div>
+    </div>
+
+<div class="tableAms">
+    <table id='amsList'>
+    <tr id='headList'>
+        <th class="columnName">Id</th>
+        <th class="columnName">Code</th>
+        <th class="columnName">Number</th>
+        <th class="columnName">Cluster</th>
+        <th class="columnName">Address</th>
+        <th class="columnName">Type</th>
+        <th class="columnName" id='height'>Height</th>
+        <th class="columnName">Types of Work</th>
+        <th class="columnName">Service Contractor</th>
+        <th class="columnName" id='serviceDate'>Service Date</th>
+        <th class="columnName">Report Contractor</th>
+        <th class="columnName" id='reportDate'>Report Date</th>
+        <th class="columnName">...</th>
+    </tr>
+    <tr id='filterList'>
+        <th><input class="filterInput" id='id' type="number" placeholder='Id'></th>
+        <th><input class="filterInput" id='code' placeholder='Code'></th>
+        <th><input class="filterInput numberValue" id='number' type="number" placeholder='Number'></th>
+        <th><input class="filterInput" id='cluster' placeholder='Cluster'></th>
+        <th><input class="filterInput" id='address' placeholder='Address'></th>
+        <th><input class="filterInput" id='type' placeholder='Type'></th>
+        <th>
+            <input class="filterInput numberValue" id='minHeight' type="number" placeholder='min'>
+            <input class="filterInput numberValue" id='maxHeight' type="number" placeholder='max'>
+        </th>
+        <th class="filterInput" value = ''>
+            <div class="dropdown">
+                <textarea id='textareaTOW' class="dropbtn" disabled>
+                    Types Of Work
+                </textarea>
+                <div class="dropdown-content">
+                    <form id = 'typesOfWork'>      
+                        <input type="checkbox" id='first1' name="typesOfWork"><label for="first1">1</label>
+                        <input type="checkbox" id='first1A' name="typesOfWork"><label for="first1A">1А</label>
+                        <input type="checkbox" id='second' name="typesOfWork"><label for="second">2</label>
+                        <input type="checkbox" id='third' name="typesOfWork"><label for="third">3</label>
+                        <input type="checkbox" id='fourth' name="typesOfWork"><label for="fourth">4</label>
+                        <input type="checkbox" id='fifth' name="typesOfWork"><label for="fifth">5</label>
+                        <input type="checkbox" id='sixth' name="typesOfWork"><label for="sixth">6</label>
+                        <input type="checkbox" id='seventh' name="typesOfWork"><label for="seventh">7</label>
+                        <input type="checkbox" id='eighth1' name="typesOfWork"><label for="eighth1">8.1</label>
+                        <input type="checkbox" id='eighth2' name="typesOfWork"><label for="eighth2">8.2</label>
+                        <input type="checkbox" id='eighth3' name="typesOfWork"><label for="eighth3">8.3</label>
+                        <input type="checkbox" id='eighth4' name="typesOfWork"><label for="eighth4">8.4</label>
+                        <input type="checkbox" id='eighth5' name="typesOfWork"><label for="eighth5">8.5</label>
+                        <input type="checkbox" id='eighth6' name="typesOfWork"><label for="eighth6">8.6</label>
+                        <input type="checkbox" id='eighth7' name="typesOfWork"><label for="eighth7">8.7</label>
+                    </form>
+                        <button id="clearTypesOfWorks">Clear</button>
+                </div>
+
+            </div>
+        </th>
+        <th><input class="filterInput" id='serviceContractor' placeholder='name'></th>
+        <th>
+            <input class="filterInput" id='afterServiceDate' placeholder='after'>
+            <input class="filterInput" id='beforeServiceDate' placeholder='before'>
+        </th>
+        <th><input class="filterInput" id='reportContractor' placeholder='name'></th>
+        <th>
+            <input class="filterInput" id='afterReportDate' placeholder='after'>
+            <input class="filterInput" id='beforeReportDate' placeholder='before'>
+        </th>
+        <th>
+            <div class="filterButtons">
+                <button class="filterButtons" id='filterButton'>Filter</button>
+                <button class="filterButtons" id='clearFilterButton'>Clear</button>
+            </div>
+            <button id='createAmsButton'>Create</button>
+        </th>
+    </tr>
+    </table>
+</div>
+<p class='hidden' id='lastRequest'></p>
+
+<script src='scripts/helpFunctions.js'></script>
+<script src='scripts/loadJSON.js'></script>
+<script src='scripts/getAllAms.js'></script>
+<script src='scripts/setListeners.js'></script>
+
+<!--     <script src='scripts/oldScript.js'></script> -->
+
+</body>
+</html>
+
+<!-- <form action='#'>
+    <input id='id' placeholder='Ams id'>
+    <input id='code' placeholder='Ams code'>
+    <input id='number' placeholder='Ams number'>
+    <input id='cluster' placeholder='Ams cluster'>
+    <input id='address' placeholder='Ams address'>
+    <input id='type' placeholder='Ams type'>
+    <input id='height' placeholder='Ams height'>
+    <input id='serviceContractor' placeholder='Ams serviceContractor'>
+    <input id='serviceDate' placeholder='Ams serviceDate'>
+    <input id='reportContractor' placeholder='Ams reportContractor'>
+    <input id='reportDate' placeholder='Ams reportDate'>
+    <input id='typesOfWork' placeholder='Ams typesOfWork'>
+
+    <button id='createAms'><s>Create ams</s></button>
+    <button id='createAms'><s>Create ams</s></button>
+    <button id='createAms'><s>Create ams</s></button>
+    <button id='createAms'><s>Create ams</s></button>
+</form> -->
