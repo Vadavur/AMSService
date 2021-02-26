@@ -1,0 +1,209 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/*html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}*/
+/* HTML5 display-role reset for older browsers */
+/*article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}*/
+
+.hidden{
+	display: none;
+	position: absolute;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableAms{
+	padding:10px 0px 0px 0px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#search_field{
+	width: 60px;
+}
+
+.search_field{
+	padding: 0px 0px 10px 0px;
+}
+
+.amsRow{
+	
+}
+
+.filterInput{
+	width: 90%;
+}
+
+#pageSize{
+	width: fit-content;
+	margin: 0px 3px;
+}
+
+
+.dropbtn {
+  background-color: #F1F1F1;
+  color: black;
+  padding: 1px;
+  font-size: 1em;
+  border: 2px solid gray;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: white;}
+
+.pagesWindow{
+padding: 0px;
+}
+
+.pageSizeWindow{
+	display: inline-block;
+	float: left;
+}
+
+#pageSizeText {
+	width:2em;
+	font-size: 1em;
+	text-align: center;
+	display: inline-block;
+	float: left;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button p{
+	margin: 0px;
+	padding: 3px;
+	display: inline-block;
+	float: left;
+}
+
+.pageNumber
+{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin: 0px 0px 0px 3px;
+	padding: 4px;
+	border: 1px solid grey;    
+	background-color: #f1f1f1;
+	font-size: 1em;
+	text-align: center;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea.dropbtn{
+	overflow:auto;
+/*	resize:none;*/
+}
+
+#pageQuantity{
+	display: inline-block;
+	float: left;
+}
+
+#pressedPage{
+	background-color: lightgrey;
+}
+
+textarea.dropbtn::-webkit-scrollbar {
+   display: none;
+ }
+
+
+.filterButtons {
+	display: inline-block;
+	float: left;
+}
