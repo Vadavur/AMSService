@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+<h2>AMS Table</h2>
+
+<table id="amsList">
+
+</table>
+
+<form action="#">
+    <input id="ams_id" placeholder="Ams id">
+    <input id="ams_code" placeholder="Ams code">
+    <input id="ams_number" placeholder="Ams number">
+    <input id="ams_address" placeholder="Ams address">
+    <input id="ams_type" placeholder="Ams type">
+    <input id="ams_height" placeholder="Ams height">
+    <input id="ans_serviced" placeholder="Ams serviced">
+<!--    empty method-->
+    <button onclick="createAms()"><s>Create ams</s></button>
+</form>
+
+<input id="search_field">
+<button onclick="getAmsById()">Get Ams by id</button><p>ex. 10100 (range 10100-10102 for test DB)</p>
+<script>
+    function getAmsById() {
+        var id = document.getElementById("search_field").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var ams = JSON.parse(this.responseText);
+                var html = '<tr>\n' +
+                    '        <th>Ams id</th>\n' +
+                    '        <th>Ams code</th>\n' +
+                    '        <th>Ams number</th>\n' +
+                    '        <th>Ams address</th>\n' +
+                    '        <th>Ams type</th>\n' +
+                    '        <th>Ams height</th>\n' +
+                    '        <th>Ams serviced</th>\n' +
+                    '        <th>Delete</th>\n' +
+                    '    </tr>';
+                html = html + '<tr><td>' + ams.id + '</td>\n' +
+                    '        <td>' + ams.code + this.responseText + '</td>\n' +
+                    '        <td>' + ams.number + '</td>\n' +
+                    '        <td>' + ams.address + '</td>' +
+                    '        <td>' + ams.type + '</td>' +
+                    '        <td>' + ams.height + '</td>' +
+                    '        <td>' + ams.serviced + '</td>' +
+                    '        <td><button onclick="deleteUser(' + ams.id + ')">Delete</button></td></tr>';
+                document.getElementById("amsList").innerHTML = html;
+            }
+        };
+        xhttp.open("GET", "http://localhost:8080/api/ams/" + id, true);
+        xhttp.send();
+    }
+
+    function deleteAms(amsId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", "http://localhost:8080/api/ams/" + amsId, true);
+        xhttp.send();
+
+        getAllAms();
+    }
+
+    function createAms() {}
+
+    function getAllAms() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var amss = JSON.parse(this.responseText);
+                var html = '<tr>\n' +
+                    '        <th>Ams id</th>\n' +
+                    '        <th>Ams code</th>\n' +
+                    '        <th>Ams number</th>\n' +
+                    '        <th>Ams address</th>\n' +
+                    '        <th>Ams type</th>\n' +
+                    '        <th>Ams height</th>\n' +
+                    '        <th>Ams serviced</th>\n' +
+                    '        <th>Delete</th>\n' +
+                    '    </tr>';
+                for (var i = 0; i < amss.length; i++) {
+                    var ams = amss[i];
+                    console.log(ams);
+                    html = html + '<tr><td>' + ams.id + '</td>\n' +
+                        '        <td>' + ams.code + '</td>\n' +
+                        '        <td>' + ams.number + '</td>\n' +
+                        '        <td>' + ams.address + '</td>' +
+                        '        <td>' + ams.type + '</td>' +
+                        '        <td>' + ams.height + '</td>' +
+                        '        <td>' + ams.serviced + '</td>' +
+                        '        <td><button onclick="deleteAms(' + ams.id + ')">Delete</button></td></tr>';
+
+                }
+                document.getElementById("amsList").innerHTML = html;
+            }
+        };
+        xhttp.open("GET", "http://localhost:8080/api/ams/", true);
+        xhttp.send();
+    }
+
+    getAllAms();
+</script>
+</body>
+</html>
